@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>详情展示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        (function() {
+            var docEl = document.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+
+            var recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+
+                //这里是假设在750px宽度设计稿的情况下，1rem = 100px；
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            };
+
+            if (!document.addEventListener) return;
+            window.addEventListener(resizeEvt, recalc, false);
+            document.addEventListener('DOMContentLoaded', recalc, false);
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="slide">
+                <div class="pageA">
+                    <div class="bg-img">
+                        <img src="./images/background.png" alt="background">
+                    </div>
+
+                    <div>
+                        <div class="info">
+                            <div class="item">
+                                <p class="title">【一件包邮】女装韩版新款名媛雪纺套装两件套夏季短袖时尚套装潮</p>
+                            </div>
+                            <div class="item">
+                                <span>2套起批</span>
+                                <span class="price">￥68.00</span>
+                            </div>
+                            <div class="item flex-space-between">
+                                <span>快递 ￥6</span>
+                                <span>成交 71套</span>
+                                <span>发货 广东广州</span>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="item flex-space-between">
+                                <span class="detail">该商品支持分销，开不囤货的网店</span>
+                                <span class="go-link-btn">我要分销</span>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="item">
+                                <span>买家保障</span>
+                                <span>15天包换</span>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="item">
+                                <span class="margin-right-10">混批</span>
+                                <span class="detail">全店满19元或2套 可混批采购</span>
+                            </div>
+                            <div class="item flex-space-between">
+                                <div>
+                                    <span class="margin-right-10">选择</span>
+                                    <span class="detail">颜色、尺码</span>
+                                </div>
+                                <div>
+                                    <span class="margin-right-10">></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="item flex-space-between">
+                                <div>
+                                    <span class="margin-right-10">评价</span>
+                                    <span class="detail">5人已评价</span>
+                                </div>
+                                <div>
+                                    <span class="score">4.6</span>
+                                    <span class="margin-right-10">></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="item flex-space-between">
+                                <span class="detail">产品属性</span>
+                                <span class="margin-right-10">></span>
+                            </div>
+                            <div class="item">
+                                <div>
+                                    <span class="detail margin-right-50">货源类别</span>
+                                    <span>现货</span>
+                                </div>
+                                <div>
+                                    <span class="detail margin-right-50">是否库存</span>
+                                    <span>是</span>
+                                </div>
+                                <div>
+                                    <span class="detail margin-right-50">库存类型</span>
+                                    <span>整单</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <div class="item flex-center">
+                                <p class="recommend">店铺相似款</p>
+                            </div>
+                            <div class="item">
+                                <div class="flex-space-around">
+                                    <div class="list">
+                                        <img src="./images/background-1.jpg" alt="background">
+                                        <span>￥12.00</span>
+                                    </div>
+                                    <div class="list">
+                                        <img src="./images/background-1.jpg" alt="background">
+                                        <span>￥12.00</span>
+                                    </div>
+                                    <div class="list">
+                                        <img src="./images/background-1.jpg" alt="background">
+                                        <span>￥12.00</span>
+                                    </div>
+                                </div>
+                                <div class="flex-space-around">
+                                    <div class="list">
+                                        <img src="./images/background-1.jpg" alt="background">
+                                        <span>￥12.00</span>
+                                    </div>
+                                    <div class="list">
+                                        <img src="./images/background-1.jpg" alt="background">
+                                        <span>￥12.00</span>
+                                    </div>
+                                    <div class="list">
+                                        <img src="./images/background-1.jpg" alt="background">
+                                        <span>￥12.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="foot-more">
+                        <span class="foot-text">继续上拉查看商品详情</span>
+                    </div>
+                </div>
+
+                <div class="pageB" style="display: none">
+                    <div class="head-more">
+                        <span class="head-text">下拉，返回商品基本信息</span>
+                    </div>
+                    <div class="bg-img">
+                        <img src="./images/background-1.jpg" alt="background">
+                    </div>
+                    <div class="bg-img">
+                        <img src="./images/background-1.jpg" alt="background">
+                    </div>
+                    <div class="bg-img">
+                        <img src="./images/background-1.jpg" alt="background">
+                    </div>
+                    <div class="bg-img">
+                        <img src="./images/background-1.jpg" alt="background">
+                    </div>
+                    <div class="bg-img">
+                        <img src="./images/background-1.jpg" alt="background">
+                    </div>
+                    <!-- <iframe id="detailIframe" src="./iframe.html" frameborder="0" scrolling="no" width="100%"></iframe> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

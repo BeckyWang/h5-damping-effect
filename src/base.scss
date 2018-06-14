@@ -1,0 +1,52 @@
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #fff;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-space-around {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.margin-right-10 {
+    margin-right: 0.1rem;
+}
+
+.margin-right-30 {
+    margin-right: 0.3rem;
+}
+
+.margin-right-50 {
+    margin-right: 0.5rem;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0;
+}
