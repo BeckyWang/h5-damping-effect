@@ -47,7 +47,6 @@ $(document).ready(() => {
             last_distance = -slideHeight;
         } else if (last_distance <= -(slideHeight + RANGE_BOTTOM)) {
             //切换到下一个页面
-            console.log('next page');
             $('.pageA').hide();
             $('.pageB').show();
             $('.pageB .head-text').html('下拉，返回商品基本信息');
@@ -100,7 +99,6 @@ $(document).ready(() => {
             last_distance = 0;
         } else if (last_distance >= RANGE_TOP) {
             //切换到上一个页面
-            console.log('prev page');
             $('.pageB').hide();
             $('.pageA').show();
             $('.pageA .foot-text').html('继续上拉查看商品详情');

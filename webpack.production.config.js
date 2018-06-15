@@ -14,7 +14,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js',
         publicPath: host
     },
@@ -22,24 +22,24 @@ module.exports = {
     module: {
         rules: [{
             test: /\.js?$/,
-            include: [path.resolve(__dirname, "src")],
-            enforce: "post",
+            include: [path.resolve(__dirname, 'src')],
+            enforce: 'post',
             use: [{
-                loader: "babel-loader",
+                loader: 'babel-loader',
                 options: {
-                    presets: ["env"],
-                    plugins: ["transform-object-rest-spread", "syntax-dynamic-import"],
+                    presets: ['env'],
+                    plugins: ['transform-object-rest-spread', 'syntax-dynamic-import'],
                 }
             }]
         }, {
             test: /\.html$/,
-            use: ["html-loader"]
+            use: ['html-loader']
         }, {
             test: /\.scss$/,
-            include: [path.resolve(__dirname, "src")],
+            include: [path.resolve(__dirname, 'src')],
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
-                use: ["css-loader", {
+                use: ['css-loader', {
                     loader: 'postcss-loader',
                     options: {
                         plugins: () => [
@@ -49,11 +49,11 @@ module.exports = {
                             require('autoprefixer')({ browsers: ['last 10 Chrome versions', 'last 5 Firefox versions', 'Safari >= 6', 'ie > 8'] })
                         ]
                     }
-                }, "sass-loader"]
+                }, 'sass-loader']
             })
         }, {
             test: /\.css$/,
-            use: ["style-loader", 'css-loader']
+            use: ['style-loader', 'css-loader']
         }, {
             test: /\.(?:png|jpg|gif|svg)$/,
             use: 'url-loader?limit=8192&name=images/[hash].[ext]'
@@ -62,10 +62,10 @@ module.exports = {
 
     resolve: {
         modules: [
-            "node_modules",
-            path.resolve(__dirname, "src"),
+            'node_modules',
+            path.resolve(__dirname, 'src'),
         ],
-        extensions: [".js", ".json", ".scss"]
+        extensions: ['.js', '.json', '.scss']
     },
 
     context: __dirname,
@@ -86,7 +86,7 @@ module.exports = {
                 reduce_vars: true
             }
         }),
-        new ExtractTextPlugin("css/index.css"),
+        new ExtractTextPlugin('css/index.css'),
         new CopyWebpackPlugin([{
             from: 'node_modules/jquery/dist/jquery.min.js',
             to: 'lib/'
