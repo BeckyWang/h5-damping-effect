@@ -96,7 +96,7 @@ module.exports = {
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [
-                'lib/index.css',
+                'css/index.css',
                 'lib/jquery.min.js'
             ],
             append: false

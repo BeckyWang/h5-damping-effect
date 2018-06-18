@@ -4,7 +4,8 @@
     "description": "新手学习任务1",
     "scripts": {
         "dist": "set NODE_ENV=production && webpack --config webpack.production.config.js",
-        "dev": "webpack-dev-server --progress --hot"
+        "dev": "webpack-dev-server --progress --hot",
+        "server": "node http.js"
     },
     "keywords": [
         "H5",
@@ -29,6 +30,10 @@
         "html-loader": "^0.5.5",
         "html-webpack-include-assets-plugin": "^0.0.7",
         "html-webpack-plugin": "^2.29.0",
+        "koa": "^2.5.1",
+        "koa-bodyparser": "^4.2.1",
+        "koa-router": "^7.4.0",
+        "koa-xml-body": "^2.0.0",
         "node-sass": "^4.9.0",
         "open-browser-webpack-plugin": "^0.0.5",
         "postcss-loader": "^2.0.6",
