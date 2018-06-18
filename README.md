@@ -21,5 +21,7 @@
 2. 安装依赖：`npm install `可使用淘宝镜像cnpm
 3. 本地测试：`npm run dev` 等模块编译加载完成后，浏览器就会自动打开。
 4. 压缩编译：`npm run dist` 用于压缩编译混淆代码
+    - `npm run server` 开启node http服务（默认8088端口）。
+    - 浏览器访问localhost:8088/index.html，必须先执行（`npm run dist`）。
 
 具体实现思路见[我的博客](https://beckywang.github.io/h5-damping-effect.html#more)。
