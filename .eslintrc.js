@@ -13,6 +13,7 @@ module.exports = {
         "sourceType": "module"
     },
     "parser": "babel-eslint",
+    "plugins": ["standard", "babel"],
     "rules": {
         "indent": [
             "error",
@@ -30,7 +31,7 @@ module.exports = {
             "error",
             "always"
         ],
-        'no-console': 'off',
-        'no-var': 'error'
+        "no-console": "off",
+        "no-var": "error"
     }
 };
