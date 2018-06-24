@@ -30,15 +30,13 @@
     background-color: #f5f5f5;
 }
 
-.bg-img {
-    width: 100%;
-}
-
-.bg-img img {
-    width: 100%;
-}
-
 .pageA {
+    .bg-img {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
     .info {
         background-color: #fff;
         margin-bottom: 0.2rem;
@@ -110,4 +108,54 @@
     text-align: center;
     padding: 0.2rem 0;
     height: 0.4rem;
+}
+
+.pageB {
+    z-index: 999;
+    .loading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.8rem;
+        .dot {
+            i {
+                width: 0.25rem;
+                height: 0.25rem;
+                background: #ff5a00;
+                border-radius: 50%;
+                display: inline-block;
+                margin: 0 0.05rem;
+            }
+        }
+        .text {
+            font-size: 0.2rem;
+            color: #999;
+            text-align: center;
+            padding: 0.2rem 0;
+            height: 0.4rem;
+        }
+    }
+    .scale {
+        animation: scale 1s infinite;
+        -webkit-animation: scale 1s infinite;
+    }
+    @keyframes scale {
+        50% {
+            transform: scale3d(0, 0, 0);
+        }
+    }
+    @-webkit-keyframes scale {
+        50% {
+            -webkit-transform: scale3d(0, 0, 0);
+        }
+    }
+    .delay1 {
+        animation-delay: 0.25s;
+        -webkit-animation-delay: 0.25s;
+    }
+    .delay2 {
+        animation-delay: 0.5s;
+        -webkit-animation-delay: 0.5s;
+    }
 }

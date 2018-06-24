@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>详情展示</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <script>
         (function() {
             var docEl = document.documentElement,
@@ -161,22 +161,19 @@
                     <div class="head-more">
                         <span class="head-text">下拉，返回商品基本信息</span>
                     </div>
-                    <div class="bg-img">
-                        <img src="./images/background-1.jpg" alt="background">
+                    <div class="iframe-info" style="display: none">
+                        <iframe id="detailIframe" frameborder="0" width="100%" scrolling="yes"></iframe>
                     </div>
-                    <div class="bg-img">
-                        <img src="./images/background-1.jpg" alt="background">
+                    <div class="loading">
+                        <div class="dot">
+                            <i class="scale"></i>
+                            <i class="scale delay1"></i>
+                            <i class="scale delay2"></i>
+                        </div>
+                        <div class="text">
+                            加载中，请稍后...
+                        </div>
                     </div>
-                    <div class="bg-img">
-                        <img src="./images/background-1.jpg" alt="background">
-                    </div>
-                    <div class="bg-img">
-                        <img src="./images/background-1.jpg" alt="background">
-                    </div>
-                    <div class="bg-img">
-                        <img src="./images/background-1.jpg" alt="background">
-                    </div>
-                    <!-- <iframe id="detailIframe" src="./iframe.html" frameborder="0" scrolling="no" width="100%"></iframe> -->
                 </div>
             </div>
         </div>

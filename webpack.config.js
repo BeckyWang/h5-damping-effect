@@ -66,6 +66,11 @@ module.exports = {
     context: __dirname,
 
     devServer: {
+        proxy: { // proxy URLs to backend development server
+            '/src': 'http://localhost:8000',
+            '/dist': 'http://localhost:8000',
+            '/learning/api/v1': 'http://localhost:8000',
+        },
         contentBase: [path.join(__dirname, 'dist')],
         compress: true, // enable gzip compression
         historyApiFallback: true, // true for index.html upon 404, object for multiple paths

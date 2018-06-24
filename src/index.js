@@ -4,10 +4,34 @@ import './index.scss';
 $(document).ready(() => {
     const RANGE_BOTTOM = 100,
         RANGE_TOP = 100;
+    const clientWidth = $(window).width();
 
     let slideHeight = $('.slide').outerHeight() - $(window).height(),
         start = null,
         last_distance = 0;
+
+    const iframe = $('#detailIframe');
+    let iframeHtml = null; //富文本片段
+
+    //iframe 高度自适应
+    const getIframeHeight = iframeEl => {
+        const iframeWin = iframeEl.contentWindow || iframeEl.contentDocument.parentWindow;
+        if (iframeWin.document.body) {
+            return iframeWin.document.body.scrollHeight || iframeWin.document.documentElement.scrollHeight;
+        }
+    };
+
+    //显示iframe
+    const showIframe = () => {
+        iframe.attr('srcdoc', iframeHtml);
+        iframe.on('load', () => {
+            $('.loading').hide();
+            $('.iframe-info').show();
+            iframe.height(getIframeHeight(iframe[0]));
+            slideHeight = $('.slide').outerHeight() - $(window).height();
+            last_distance = 0;
+        });
+    };
 
     $('.pageA').on('touchstart', e => {
         start = e.changedTouches[0].pageY;
@@ -50,9 +74,35 @@ $(document).ready(() => {
             $('.pageA').hide();
             $('.pageB').show();
             $('.pageB .head-text').html('下拉，返回商品基本信息');
-
-            slideHeight = $('.slide').outerHeight() - $(window).height();
-            last_distance = 0;
+            //获取富文本内容，如果有直接显示，否则显示loading，再异步获取
+            if (iframeHtml) {
+                showIframe();
+            } else {
+                $.ajax({
+                    url: '/learning/api/v1/iframe/111',
+                    type: 'get',
+                    success: function(result) {
+                        iframeHtml = `
+                            <!DOCTYPE html>
+                            <html>
+                            <head>
+                                <meta charset="utf-8" />
+                                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                                <title>Detail Page</title>
+                                <meta name="viewport" content="width=device-width, initial-scale=1">
+                                <style>
+                                    * {margin: 0;padding: 0;}
+                                    body {background-color: #fff;}        
+                                    img {max-width: ${clientWidth}px;}
+                                </style>
+                            </head>
+                            <body>${result.content}</body>
+                            </html>
+                            `;
+                        showIframe();
+                    }
+                });
+            }
 
             $('.wrapper').css({
                 'transform': 'translateY(0)',
