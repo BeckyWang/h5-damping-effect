@@ -18,7 +18,6 @@ const router = new Router({
 
 router
     .get('/iframe/:iframeID', async ctx => {
-        console.log('返回文本信息');
         ctx.body = {
             id: ctx.params.iframeID,
             content: `<p><span style="color: rgb(43, 43, 43); font-family: simsun, arial, helvetica, clean, sans-serif; font-size: 14px; text-align: justify; text-indent: 28px; background-color: rgb(255, 255, 255);">据微博@中国国际航空消息，6月7日，国航香港-北京CA110航班，起飞后不久因舱内出现异味，机组决定返航，飞机于20:53顺利降落在香港机场。经地面机务人员系统检查，确认为空调组件故障，不影响飞行安全。6月8日1:53，航班再次起飞，于4:27平安降落在首都机场。此次故障造成了航班长时间延误，给旅客带来不愉快的感受，国航深表歉意！并对广大旅客的支持和理解，表示衷心感谢！</span></p>
@@ -71,12 +70,9 @@ app
     .use(router.allowedMethods());
 
 http.createServer(function(request, response) {
-    console.log(request.url);
     if (/api/.test(request.url)) {
-        console.log('获取数据');
         app.callback()(request, response);
     } else {
-        console.log('获取文件');
         const pathname = url.parse(request.url).pathname;
         const realPath = path.join(__dirname, pathname);
         let ext = path.extname(realPath);

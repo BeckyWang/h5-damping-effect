@@ -1,5 +1,5 @@
-import './index.html';
-import './index.scss';
+import '../index.html';
+import '../scss/index.scss';
 
 $(document).ready(() => {
     const RANGE_BOTTOM = 100,
@@ -97,6 +97,8 @@ $(document).ready(() => {
                                 </style>
                             </head>
                             <body>${result.content}</body>
+                            <script type="text/javascript" src="http://localhost:8088/dist/lib/jquery.min.js"></script>
+                            <script type="text/javascript" src="./src/js/iframe.js"></script>
                             </html>
                             `;
                         showIframe();

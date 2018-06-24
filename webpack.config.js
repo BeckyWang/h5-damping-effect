@@ -9,7 +9,7 @@ const host = `http://localhost:${port}/`;
 
 module.exports = {
     entry: {
-        index: './src/index.js'
+        index: './src/js/index.js'
     },
 
     output: {
