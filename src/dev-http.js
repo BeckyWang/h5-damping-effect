@@ -3,7 +3,7 @@ const PORT = 8000;
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const mine = require('./mine').types;
+const mine = require('../mine').types;
 const path = require('path');
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
@@ -22,7 +22,7 @@ router
             id: ctx.params.iframeID,
             content: `<p><span style="color: rgb(43, 43, 43); font-family: simsun, arial, helvetica, clean, sans-serif; font-size: 14px; text-align: justify; text-indent: 28px; background-color: rgb(255, 255, 255);">据微博@中国国际航空消息，6月7日，国航香港-北京CA110航班，起飞后不久因舱内出现异味，机组决定返航，飞机于20:53顺利降落在香港机场。经地面机务人员系统检查，确认为空调组件故障，不影响飞行安全。6月8日1:53，航班再次起飞，于4:27平安降落在首都机场。此次故障造成了航班长时间延误，给旅客带来不愉快的感受，国航深表歉意！并对广大旅客的支持和理解，表示衷心感谢！</span></p>
                 <p><span style="color: rgb(43, 43, 43); font-family: simsun, arial, helvetica, clean, sans-serif; font-size: 14px; text-align: justify; text-indent: 28px; background-color: rgb(255, 255, 255);"></span></p>
-                <p><img src="./src/images/19.jpg" _src="./images/19.jpg"></p>
+                <p><img src="../images/iframe/19.jpg" /></p>
                 <p style="text-align: center;">
                     <span style="font-size: 22.0px;background-color: #ffffff;color: #ff0000;">S码 建议【90斤以下】</span><br>
                     <span style="font-size: 22.0px;background-color: #ffffff;color: #ff0000;">M码 建议【90-100斤】</span><br>
@@ -35,13 +35,13 @@ router
                     <span style="font-size: 18px; color: rgb(0, 176, 240);"><strong>网页中频繁更改的内容，应该从后台动态获取，对内容较多的请求通常采用富文本编辑器来编辑内容，从而自带了样式。因此同一份内容若需要在pc和移动端同时展示，有许多差异：</strong></span>
                 </p>
                 <p>
-                    <img src="./src/images/3.jpg" _src="./image/3.jpg">
+                    <img src="../images/iframe/3.jpg" />
                     <span>这是描述</span>
-                    <img src="./src/images/6.jpg" _src="./image/6.jpg" style="float: right;">
+                    <img src="../images/iframe/6.jpg" style="float: right;" />
                 </p>
-                <p><img src="./src/images/24.jpg" _src="./images/24.jpg"></p>
-                <p><img src="./src/images/2.jpg" _src="./images/2.jpg"></p>
-                <p class="test"><img src="./src/images/8.jpg" _src="./images/8.jpg"></p>
+                <p><img src="../images/iframe/24.jpg" /></p>
+                <p><img src="../images/iframe/2.jpg" /></p>
+                <p class="test"><img src="../images/iframe/8.jpg" /></p>
                 <p>
                     <img src="http://img.baidu.com/hi/jx2/j_0015.gif" />
                     <img src="http://img.baidu.com/hi/jx2/j_0074.gif" width="64" height="53" />
