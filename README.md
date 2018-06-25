@@ -16,12 +16,33 @@
 
     * 可用jQuery实现
 
+----------- 2018.06.25 增加新需求 ---------------
+PC富文本内容自适应显示
+* 要求
+
+    * 有一段PC端显示的富文本HTML片段，在手机H5页面B区上加载显示
+    * 保持PC端的样式缩放适应手机屏幕
+    * 如果HTML富文本有图片
+
+        * 图片默认不加载
+        * 当手机可视区间到B区时候，图片触发懒加载显示
+        * 点击富文本图时候，有弹层加载图片，可放大查看
+* 提示
+
+    * 可以考虑用iframe方式处理富文本
+    * 但是要考虑到iframe的父子页面的通信和兼容性
+    * 还有考虑到iframe里富文本图片懒加载导致高度变化带来的父页面的高度自适应
+
+
+
 ### 使用方法
 1. 克隆仓库：`git clone https://github.com/BeckyWang/h5-damping-effect.git`
 2. 安装依赖：`npm install `可使用淘宝镜像cnpm
-3. 本地测试：`npm run dev` 等模块编译加载完成后，浏览器就会自动打开。
-4. 压缩编译：`npm run dist` 用于压缩编译混淆代码
-    - `npm run server` 开启node http服务（默认8088端口）。
-    - 浏览器访问localhost:8088/index.html，必须先执行（`npm run dist`）。
+3. 开启服务：`npm run dev-server` 开启本地测试http服务。
+4. 本地测试：`npm run dev` 等模块编译加载完成后，浏览器就会自动打开。
+5. 生产环境：
+    - `npm run dist` 用于压缩编译混淆代码。
+    - `npm run dist-server` 开启生产环境下的http服务（默认8087端口）。
+    - 浏览器访问localhost:8087/index.html。
 
-具体实现思路见[我的博客](https://beckywang.github.io/h5-damping-effect.html#more)。
+滚动阻尼效果具体实现思路见[我的博客-滚动阻尼效果](https://beckywang.github.io/h5-damping-effect.html#more)。
