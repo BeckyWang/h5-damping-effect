@@ -5,8 +5,9 @@
     "scripts": {
         "dist": "set NODE_ENV=production && webpack --config webpack.production.config.js",
         "dev": "webpack-dev-server --progress --hot",
-        "server": "node http.js",
-        "eslint": "eslint ./src/*.js ./*.js --fix"
+        "dev-server": "node ./src/dev-http.js",
+        "dist-server": "node dist-http.js",
+        "eslint": "eslint ./src/js/*.js ./*.js --fix"
     },
     "keywords": [
         "H5",
