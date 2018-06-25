@@ -79,4 +79,8 @@ $(document).ready(() => {
         $('.img-modal .img-detail').attr('src', e.target.src);
         $('.img-modal').show();
     });
+
+    $('.img-modal').on('click', () => {
+        $('.img-modal').hide();
+    });
 });
