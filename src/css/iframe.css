@@ -43,6 +43,6 @@ body {
     transition-property: transform, -webkit-transform;
 }
 
-.pageB {
+.main {
     background-color: #fff;
 }

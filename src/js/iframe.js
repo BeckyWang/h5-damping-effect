@@ -1,16 +1,38 @@
+import '../css/iframe.css';
 $(document).ready(() => {
     const RANGE_TOP = 100;
 
     let start = null,
         last_distance = 0;
 
-    $('.pageB').on('touchstart', e => {
+    const clientHeight = $(window).height();
+    let continueLoading = true;
+    const imgTags = document.getElementsByTagName('img');
+
+    const lazyload = () => {
+        let num = 0;
+        for (let img of imgTags) {
+            const { top } = img.getBoundingClientRect();
+
+            if (top < clientHeight) {
+                img.src = img.dataset.src;
+            }
+
+            !/loading.gif/.test(img.src) && num++;
+        }
+        num === imgTags.length && (continueLoading = false);
+    };
+    lazyload();
+
+    $('.main').on('touchstart', e => {
         start = e.changedTouches[0].pageY;
     });
 
-    $('.pageB').on('touchmove', e => {
+    $('.main').on('touchmove', e => {
         const cur_move = e.changedTouches[0].pageY - start;
         const move_distance = last_distance + cur_move;
+
+        continueLoading && lazyload();
 
         $('.wrapper').css({
             'transform': `translateY(${move_distance}px)`,
@@ -24,7 +46,7 @@ $(document).ready(() => {
         }
     });
 
-    $('.pageB').on('touchend', e => {
+    $('.main').on('touchend', e => {
         const cur_move = e.changedTouches[0].pageY - start;
         last_distance += cur_move;
         const slideHeight = $('.slide').outerHeight() - $(window).height();
@@ -49,6 +71,7 @@ $(document).ready(() => {
                 'transform': 'translateY(0)',
                 'transition-duration': '0ms'
             });
+            last_distance = 0;
         }
     });
 });

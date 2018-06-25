@@ -1,6 +1,5 @@
 import '../index.html';
 import '../css/index.scss';
-import '../css/iframe.css';
 
 $(document).ready(() => {
     const RANGE_BOTTOM = 100;
@@ -13,24 +12,6 @@ $(document).ready(() => {
 
     const iframe = $('#detailIframe');
     let iframeHtml = null; //富文本片段
-
-    //iframe 高度自适应
-    const getIframeHeight = iframeEl => {
-        const iframeWin = iframeEl.contentWindow || iframeEl.contentDocument.parentWindow;
-        if (iframeWin.document.body) {
-            return iframeWin.document.body.scrollHeight || iframeWin.document.documentElement.scrollHeight;
-        }
-    };
-
-    //显示iframe
-    const showIframe = () => {
-        iframe.attr('srcdoc', iframeHtml);
-        iframe.on('load', () => {
-            $('.loading').hide();
-            $('.iframe-info').show();
-            iframe.height(getIframeHeight(iframe[0]));
-        });
-    };
 
     $('.pageA').on('touchstart', e => {
         start = e.changedTouches[0].pageY;
@@ -84,6 +65,9 @@ $(document).ready(() => {
                     url: '/learning/api/v1/iframe/111',
                     type: 'get',
                     success: function(result) {
+                        const newHtml = result.content.replace(/<img.*?\/>/g, match => {
+                            return match.replace('src', 'src="./images/iframe/loading.gif" data-src');
+                        });
                         iframeHtml = `
                             <!DOCTYPE html>
                             <html>
@@ -105,8 +89,8 @@ $(document).ready(() => {
                                             <div class="head-more">
                                                 <p class="head-text">下拉，返回商品基本信息</p>
                                             </div>
-                                            <div class="pageB">
-                                                ${result.content}
+                                            <div class="main">
+                                                ${newHtml}
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +100,10 @@ $(document).ready(() => {
                             <script type="text/javascript" src="./js/iframe.js"></script>
                             </html>
                             `;
-                        showIframe();
+                        iframe.height(clientHeight);
+                        iframe.attr('srcdoc', iframeHtml);
+                        $('.loading').hide();
+                        $('.iframe-info').show();
                     }
                 });
             }

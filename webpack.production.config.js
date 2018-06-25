@@ -72,7 +72,7 @@ module.exports = {
             })
         }, {
             test: /\.(?:png|jpg|gif|svg)$/,
-            use: 'url-loader?limit=8192&name=images/[hash].[ext]'
+            use: 'url-loader?limit=8192&name=images/[hash].[ext]' //小于8k,内嵌;大于8k生成文件
         }]
     },
 
@@ -113,6 +113,7 @@ module.exports = {
         }]),
         new HtmlwebpackPlugin({
             template: 'src/index.html',
+            excludeChunks: ['iframe', 'iframe.css'],
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [

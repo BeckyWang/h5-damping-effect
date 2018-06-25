@@ -9,7 +9,8 @@ const host = `http://localhost:${port}/`;
 
 module.exports = {
     entry: {
-        index: './src/js/index.js'
+        index: './src/js/index.js',
+        iframe: './src/js/iframe.js'
     },
 
     output: {
@@ -49,7 +50,7 @@ module.exports = {
             use: ['style-loader', 'css-loader']
         }, {
             test: /\.(?:png|jpg|gif|svg)$/,
-            use: 'url-loader?limit=8192&name=image/[hash].[ext]' //小于8k,内嵌;大于8k生成文件
+            use: 'url-loader?limit=8192&name=images/[hash].[ext]' //小于8k,内嵌;大于8k生成文件
         }]
     },
 
@@ -68,6 +69,8 @@ module.exports = {
     devServer: {
         proxy: { // proxy URLs to backend development server
             '/images': 'http://localhost:8000',
+            '/css': 'http://localhost:8000',
+            '/js': 'http://localhost:8000',
             '/learning/api/v1': 'http://localhost:8000',
         },
         contentBase: [path.join(__dirname, 'dist')],
@@ -88,6 +91,7 @@ module.exports = {
         }]),
         new HtmlwebpackPlugin({
             template: 'src/index.html',
+            excludeChunks: ['iframe', 'iframe.css'],
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [
