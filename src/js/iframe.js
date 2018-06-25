@@ -14,7 +14,7 @@ $(document).ready(() => {
         for (let img of imgTags) {
             const { top } = img.getBoundingClientRect();
 
-            if (top < clientHeight) {
+            if (top < clientHeight && /loading.gif/.test(img.src)) {
                 img.src = img.dataset.src;
             }
 
@@ -73,5 +73,10 @@ $(document).ready(() => {
             });
             last_distance = 0;
         }
+    });
+
+    $('.main img').on('click', e => {
+        $('.img-modal .img-detail').attr('src', e.target.src);
+        $('.img-modal').show();
     });
 });

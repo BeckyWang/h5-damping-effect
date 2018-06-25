@@ -94,6 +94,9 @@ $(document).ready(() => {
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="img-modal" style="display: none">
+                                        <img class="img-detail" />
+                                    </div>
                                 </div>
                             </body>
                             <script type="text/javascript" src="./lib/jquery.min.js"></script>
