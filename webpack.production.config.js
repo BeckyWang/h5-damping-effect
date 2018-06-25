@@ -4,13 +4,16 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const SCSSExtract = new ExtractTextPlugin('css/index.css');
+const CSSExtract = new ExtractTextPlugin('css/iframe.css');
 
-const port = 8088;
+const port = 8087;
 const host = `http://localhost:${port}/`;
 
 module.exports = {
     entry: {
-        index: './src/index.js'
+        index: './src/js/index.js',
+        iframe: './src/js/iframe.js'
     },
 
     output: {
@@ -37,7 +40,7 @@ module.exports = {
         }, {
             test: /\.scss$/,
             include: [path.resolve(__dirname, 'src')],
-            use: ExtractTextPlugin.extract({
+            use: SCSSExtract.extract({
                 fallback: 'style-loader',
                 use: ['css-loader', {
                     loader: 'postcss-loader',
@@ -53,7 +56,20 @@ module.exports = {
             })
         }, {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: CSSExtract.extract({
+                fallback: 'style-loader',
+                use: ['css-loader', {
+                    loader: 'postcss-loader',
+                    options: {
+                        plugins: () => [
+                            require('cssnano')({
+                                preset: 'default',
+                            }),
+                            require('autoprefixer')({ browsers: ['last 10 Chrome versions', 'last 5 Firefox versions', 'Safari >= 6', 'ie > 8'] })
+                        ]
+                    }
+                }, 'sass-loader']
+            })
         }, {
             test: /\.(?:png|jpg|gif|svg)$/,
             use: 'url-loader?limit=8192&name=images/[hash].[ext]'
@@ -86,10 +102,14 @@ module.exports = {
                 reduce_vars: true
             }
         }),
-        new ExtractTextPlugin('css/index.css'),
+        SCSSExtract,
+        CSSExtract,
         new CopyWebpackPlugin([{
             from: 'node_modules/jquery/dist/jquery.min.js',
             to: 'lib/'
+        }, {
+            from: './src/images/iframe',
+            to: 'images/iframe/'
         }]),
         new HtmlwebpackPlugin({
             template: 'src/index.html',

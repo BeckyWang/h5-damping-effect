@@ -67,8 +67,7 @@ module.exports = {
 
     devServer: {
         proxy: { // proxy URLs to backend development server
-            '/src': 'http://localhost:8000',
-            '/dist': 'http://localhost:8000',
+            '/images': 'http://localhost:8000',
             '/learning/api/v1': 'http://localhost:8000',
         },
         contentBase: [path.join(__dirname, 'dist')],
