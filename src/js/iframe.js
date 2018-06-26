@@ -14,11 +14,11 @@ $(document).ready(() => {
         for (let img of imgTags) {
             const { top } = img.getBoundingClientRect();
 
-            if (top < clientHeight && /loading.gif/.test(img.src)) {
-                img.src = img.dataset.src;
+            if (/loading.gif/.test(img.src)) {
+                top < clientHeight && (img.src = img.dataset.src);
+            } else {
+                num++;
             }
-
-            !/loading.gif/.test(img.src) && num++;
         }
         num === imgTags.length && (continueLoading = false);
     };
