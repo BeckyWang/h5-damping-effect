@@ -46,3 +46,4 @@
     - 浏览器访问localhost:8087/index.html。
 
 滚动阻尼效果具体实现思路见[我的博客-滚动阻尼效果](https://beckywang.github.io/h5-damping-effect.html#more)。
+富文本内容显示具体实现思路见[我的博客-富文本显示](https://beckywang.github.io/h5-iframe.html#more)。
