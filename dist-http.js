@@ -74,6 +74,11 @@ http.createServer(function(request, response) {
         app.callback()(request, response);
     } else {
         const pathname = url.parse(request.url).pathname;
+    if (path.normalize(decodeURI(pathname)) !== decodeURI(pathname)) {
+        response.statusCode = 403;
+        response.end();
+        return;
+    }
         const realPath = path.join('dist', pathname);
         let ext = path.extname(realPath);
         ext = ext ? ext.slice(1) : 'unknown';
